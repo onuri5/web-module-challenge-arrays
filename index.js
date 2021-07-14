@@ -166,13 +166,13 @@ Use the filterByWord function below to do the following:
 */
 
 function filterByWord(arr, flavor){
-  let separatorArr = [];
+  let flavorSeparate = [];
   let finalArr = [];
   for (let i = 0; i < arr.length; i++) {
     let flavors = arr[i]
-    separatorArr = flavors.split(" ")
-    if (separatorArr.indexOf(flavor) !== -1) {
-      separatorArr = separatorArr.splice(separatorArr.indexOf(flavor), 1);
+    flavorSeparate = flavors.split(" ")
+    if (flavorSeparate.includes(flavor)) {
+      flavorSeparate = flavorSeparate.splice(flavorSeparate.indexOf(flavor), 1);
       finalArr.push(flavors);
     }
    }
@@ -192,10 +192,50 @@ Use the getAverageWordLength function below to do the following:
   For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-  /*code here*/
+function getAverageWordLength(arr){
+  let wordCount = 0;
+  let separatorArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    separatorArr = arr[i].split(" ");
+    wordCount += separatorArr.length;
+  }
+  wordCount /= arr.length;
+  return wordCount;
 }
 
+console.log(getAverageWordLength([
+  "Banana Nut Fudge",
+  "Black Walnut",
+  "Burgundy Cherry",
+  "Butterscotch Ribbon",
+  "Cherry Macaron",
+  "Chocolate",
+  "Chocolate Almond",
+  "Chocolate Chip",
+  "Chocolate Fudge",
+  "Chocolate Mint",
+  "Chocolate Ribbon",
+  "Coffee",
+  "Coffee Candy",
+  "Date Nut",
+  "Eggnog",
+  "French Vanilla",
+  "Green Mint Stick",
+  "Lemon Crisp",
+  "Lemon Custard",
+  "Lemon Sherbet",
+  "Maple Nut",
+  "Orange Sherbet",
+  "Peach",
+  "Peppermint Fudge Ribbon",
+  "Peppermint Stick",
+  "Pineapple Sherbet",
+  "Raspberry Sherbet",
+  "Rocky Road",
+  "Strawberry",
+  "Vanilla",
+  "Vanilla Burnt Almond"
+]))
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
 Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors 
@@ -210,11 +250,19 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-  /*code here*/
+function getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors){
+  let finalArr = [];
+  let flavorsArr = [originalFlavors, newFlavors, seasonalFlavors, regionalFlavors];
+  for (let i = 0; i < flavorsArr.length; i++) {
+    let individualArr = flavorsArr[i];
+    const randomNum = Math.floor(Math.random() * individualArr.length - 1);
+    finalArr.push(individualArr[randomNum]);
+  }
+  return finalArr;
 }
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
+
 // const newFlavors = [
 //   "Date night",
 //   "U.S.S Butterscotch (Stranger Things special)",
