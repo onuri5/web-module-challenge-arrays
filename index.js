@@ -165,15 +165,12 @@ Use the filterByWord function below to do the following:
   DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem. 
 */
 
-function filterByWord(arr, flavor){
-  let flavorSeparate = [];
+function filterByWord(arr, flavors){
   let finalArr = [];
   for (let i = 0; i < arr.length; i++) {
-    let flavors = arr[i]
-    flavorSeparate = flavors.split(" ")
-    if (flavorSeparate.includes(flavor)) {
-      flavorSeparate = flavorSeparate.splice(flavorSeparate.indexOf(flavor), 1);
-      finalArr.push(flavors);
+    let flavor = arr[i]
+    if (flavor.includes(flavors)) {
+      finalArr.push(flavor);
     }
    }
   return finalArr;
